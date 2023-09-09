@@ -4,6 +4,27 @@ const thumbsupply = require('thumbsupply');
 const { PassThrough } = require('stream')
 const fs = require("fs");
 
+const videos = [
+    {
+        id: 0,
+        poster: '/video/0/poster',
+        duration: '3 mins',
+        name: 'Sample 4'
+    },
+    {
+        id: 1,
+        poster: '/video/1/poster',
+        duration: '4 mins',
+        name: 'Sample 2'
+    },
+    {
+        id: 2,
+        poster: '/video/2/poster',
+        duration: '2 mins',
+        name: 'Sample 3'
+    },
+];
+
 router.get('/:id', (req, res) => {
     const path = `assets/${req.params.id}.mp4`;
     const stat = fs.statSync(path);
@@ -38,7 +59,6 @@ router.get('/:id', (req, res) => {
 router.get('/:id/data', (req, res) => {
     const id = parseInt(req.params.id, 10);
     res.json(videos[id]);
-    console.log('id')
 });
 
 router.get('/:id/poster', (req, res) => {
